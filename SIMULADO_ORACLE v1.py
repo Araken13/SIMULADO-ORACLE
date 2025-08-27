@@ -85,7 +85,9 @@ answers = []
 with st.form("quiz_form"):
     for i, q in enumerate(questions):
         st.subheader(f"Questão {i+1}")
-        selected = st.radio("", q["options"], key=i, index=None)
+        opcoes = ["Selecione uma resposta"] + q["options"]
+        selected = st.radio("", opcoes, key=i)
+        answers.append(selected)
         answers.append(selected)
     submitted = st.form_submit_button("Enviar Respostas")
 
@@ -106,7 +108,19 @@ if submitted:
         st.warning("Bom esforço! Revise os tópicos onde errou.")
     else:
         st.error("Recomendo estudar mais antes de tentar novamente.")
-        # Avaliação e resultado
+        
+        #implementação regra
+        if "Selecione uma resposta" in answers:
+            st.warning("⚠️ Por favor, responda todas as perguntas antes de enviar.")
+        else:
+    # calcular score, porcentagem, nota etc.
+
+        
+
+
+
+
+# Avaliação e resultado
 if submitted:
     for i, q in enumerate(questions):
         if q["options"].index(answers[i]) == q["correct"]:
