@@ -85,7 +85,7 @@ answers = []
 with st.form("quiz_form"):
     for i, q in enumerate(questions):
         st.subheader(f"Questão {i+1}")
-       selected = st.radio("", q["options"], key=i, index=None)
+        selected = st.radio("", q["options"], key=i, index=None)
         answers.append(selected)
     submitted = st.form_submit_button("Enviar Respostas")
 
